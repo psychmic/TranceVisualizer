@@ -1,9 +1,16 @@
+import BalatroSplash from "./components/BalatroSplash/BalatroSplash";
+import './App.css';
 
 function App() {
   return (
-    <>
-      <h1>TranceVisualizer</h1>
-    </>
+    <div className='wrapper'>
+      <header>
+        <h1>TranceVisualizer</h1>
+      </header>
+      <main>
+        <BalatroSplash />
+      </main>
+    </div>
   );
 }
 
