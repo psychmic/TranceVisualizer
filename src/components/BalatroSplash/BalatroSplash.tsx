@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Triangle } from "ogl";
-import "./BalatroSplash.css";
+import "./styles.css";
 
 export default function BalatroSplash() {
   const containerRef = useRef<HTMLDivElement>(null);
