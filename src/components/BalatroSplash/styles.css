@@ -1,3 +1,8 @@
+.balatro-splash-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .balatro-splash-container {
   --scale: 64;
   display: block;
@@ -11,4 +16,16 @@
   display: block;
   border: 4px solid #ffffffde;
   border-radius: 10px;
+}
+
+.color-picker-wrapper {
+  display: flex;
+  gap: 16px;
+  padding: 24px 0px;
+}
+
+.color-picker-wrapper .color-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
