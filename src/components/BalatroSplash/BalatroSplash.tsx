@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Renderer, Program, Mesh, Triangle } from "ogl";
-import { HexColorPicker, HexColorInput } from "react-colorful";
-import "./styles.css";
 import { hexToVec4 } from "../../functions/helper";
+import ColorPicker from "../ColorPicker/ColorPicker";
+import "./styles.css";
 
 export default function BalatroSplash() {
   const [primaryColor, setPrimaryColor] = useState('#de443b'); // #de433b
@@ -161,14 +161,8 @@ export default function BalatroSplash() {
       <div ref={containerRef} className="balatro-splash-container" />
       <div className="color-picker-wrapper">
         <h2>Splash Colors</h2>
-        <div className="color-picker">
-          <HexColorPicker color={primaryColor} onChange={setPrimaryColor} />
-          <HexColorInput color={primaryColor} onChange={setPrimaryColor} />
-        </div>
-        <div className="color-picker">
-          <HexColorPicker color={secondaryColor} onChange={setSecondaryColor} />
-          <HexColorInput color={secondaryColor} onChange={setSecondaryColor} />
-        </div>
+        <ColorPicker color={primaryColor} setColor={setPrimaryColor} />
+        <ColorPicker color={secondaryColor} setColor={setSecondaryColor} />
       </div>
     </div>
   );

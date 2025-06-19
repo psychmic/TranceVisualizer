@@ -24,7 +24,7 @@
   padding: 24px 0px;
 }
 
-.color-picker-wrapper .color-picker {
+.color-picker-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
