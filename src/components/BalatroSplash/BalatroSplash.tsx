@@ -162,8 +162,8 @@ export default function BalatroSplash() {
       <div className="splash-content">
         <div ref={containerRef} className="canvas-container" />
         <div className="color-picker-wrapper">
-          <ColorPicker color={primaryColor} setColor={setPrimaryColor} />
-          <ColorPicker color={secondaryColor} setColor={setSecondaryColor} />
+          <ColorPicker label={"Splash Color 1"} color={primaryColor} setColor={setPrimaryColor} />
+          <ColorPicker label={"Splash Color 2"} color={secondaryColor} setColor={setSecondaryColor} />
         </div>
       </div>
     </section>
