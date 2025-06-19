@@ -8,8 +8,10 @@ export default function BalatroSplash() {
   const [primaryColor, setPrimaryColor] = useState('#de443b'); // #de433b
   const [secondaryColor, setSecondaryColor] = useState('#006bb4'); // #006bb4
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null); // canvas container
+  const programRef = useRef<Program | null>(null); // webgl program
 
+  // run animation
   useEffect(() => {
     if (!containerRef.current) return;
     const container = containerRef.current;
@@ -104,6 +106,8 @@ export default function BalatroSplash() {
       },
     });
 
+    programRef.current = program;
+
     const mesh = new Mesh(gl, { geometry, program });
 
     const resize = () => {
@@ -135,7 +139,22 @@ export default function BalatroSplash() {
       container.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [primaryColor, secondaryColor]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // update primaryColor
+  useEffect(() => {
+    if (programRef.current) {
+      programRef.current.uniforms.color_1.value = hexToVec4(primaryColor);
+    }
+  }, [primaryColor]);
+
+  // update secondaryColor
+  useEffect(() => {
+    if (programRef.current) {
+      programRef.current.uniforms.color_2.value = hexToVec4(secondaryColor);
+    }
+  }, [secondaryColor]);
 
   return (
     <div className="balatro-splash-wrapper">
