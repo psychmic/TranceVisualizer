@@ -157,13 +157,15 @@ export default function BalatroSplash() {
   }, [secondaryColor]);
 
   return (
-    <div className="balatro-splash-wrapper">
-      <div ref={containerRef} className="balatro-splash-container" />
-      <div className="color-picker-wrapper">
-        <h2>Splash Colors</h2>
-        <ColorPicker color={primaryColor} setColor={setPrimaryColor} />
-        <ColorPicker color={secondaryColor} setColor={setSecondaryColor} />
+    <section>
+      <h2>Splash</h2>
+      <div className="splash-content">
+        <div ref={containerRef} className="canvas-container" />
+        <div className="color-picker-wrapper">
+          <ColorPicker color={primaryColor} setColor={setPrimaryColor} />
+          <ColorPicker color={secondaryColor} setColor={setSecondaryColor} />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
