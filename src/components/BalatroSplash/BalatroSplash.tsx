@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Renderer, Program, Mesh, Triangle } from "ogl";
 import { hexToVec4 } from "../../functions/helper";
 import ColorPicker from "../ColorPicker/ColorPicker";
-import "./styles.css";
+import "./BalatroSplash.css";
 
 export default function BalatroSplash() {
   const [primaryColor, setPrimaryColor] = useState('#de443b'); // #de433b

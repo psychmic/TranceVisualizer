@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { HexColorInput, HexColorPicker } from "react-colorful";
 import resetIcon from "../../assets/refresh.svg";
-import './styles.css';
+import './ColorPicker.css';
 
 interface PropTypes {
   label: string,
