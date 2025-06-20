@@ -5,7 +5,7 @@ function App() {
   return (
     <div className='wrapper'>
       <header>
-        <h1>TranceVisualizer</h1>
+        <h1 id="title"><a href="https://github.com/SpectralPack/Trance" target="blank">Trance</a><span>Visualizer</span></h1>
       </header>
       <main>
         <BalatroSplash />
