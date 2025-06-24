@@ -1,4 +1,5 @@
 import BalatroSplash from "./components/BalatroSplash/BalatroSplash";
+import BackgroundShader from "./components/BalatroBackground/BackgroundShader";
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       </header>
       <main>
         <BalatroSplash />
+        <BackgroundShader />
       </main>
     </div>
   );
