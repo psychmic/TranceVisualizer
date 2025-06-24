@@ -1,0 +1,21 @@
+#boss-blinds {
+  padding: 8px 0;
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.blind-button {
+  border-radius: 50%;
+  padding: 4px;
+  height: 80px;
+  width: 80px;
+}
+
+#selected-blind {
+  background-color: red;
+}
