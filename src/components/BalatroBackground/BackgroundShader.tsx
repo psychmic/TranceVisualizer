@@ -1,9 +1,10 @@
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Renderer, Program, Mesh, Triangle } from "ogl";
 import { hexToVec4 } from "../../functions/helper";
 import "./BackgroundShader.css";
 
 export default function BackgroundShader() {
+  const [isBossBlind, setIsBossBlind] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const programRef = useRef<Program | null>(null);
 
@@ -48,7 +49,7 @@ export default function BackgroundShader() {
         vec2 uv = (floor(screen_coords * (1.0 / pixel_size)) * pixel_size - 0.5 * iResolution.xy) / length(iResolution.xy) - vec2(0.12, 0.0);
         float uv_len = length(uv);
 
-        float speed = (spin_time * SPIN_EASE * 0.2) + 302.2;
+        float speed = (spin_time * SPIN_EASE * 0.05) + 302.2;
         float new_pixel_angle = atan(uv.y, uv.x) - speed + SPIN_EASE * 20.0 * (spin_amount * uv_len + (1.0 - spin_amount));
         vec2 mid = (iResolution.xy / length(iResolution.xy)) / 2.0;
         uv = vec2(uv_len * cos(new_pixel_angle) + mid.x, uv_len * sin(new_pixel_angle) + mid.y) - mid;
@@ -81,7 +82,7 @@ export default function BackgroundShader() {
         time: { value: 0 },
         spin_time: { value: 0 },
         contrast: { value: 1.0 },
-        spin_amount: { value: 0.5 },
+        spin_amount: { value: isBossBlind ? 0.5 : 0.0 },
         colour_1: { value: hexToVec4("#de443b") },
         colour_2: { value: hexToVec4("#006bb4") },
         colour_3: { value: hexToVec4("#ffffff") },
@@ -101,12 +102,12 @@ export default function BackgroundShader() {
     resize();
 
     let frameId: number;
-    const start = performance.now() - 12000;
+    const start = performance.now();
 
     const render = (t: number) => {
       const elapsed = (t - start) * 0.001;
       program.uniforms.time.value = elapsed;
-      program.uniforms.spin_time.value = elapsed;
+      program.uniforms.spin_time.value = isBossBlind ? elapsed : 0;
 
       renderer.render({ scene: mesh });
       frameId = requestAnimationFrame(render);
@@ -119,7 +120,7 @@ export default function BackgroundShader() {
       container.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, []);
+  }, [isBossBlind]);
 
   return (
     <section>
